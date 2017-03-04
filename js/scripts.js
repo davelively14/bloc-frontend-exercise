@@ -27,11 +27,22 @@ var data = [{	student_name: 'Sanny Lin',
 
 //Write your code here
 
-$(document).ready(function() {
+var removeEntry = function() {
+	var $totalMessages = $('#total-messages')
+	var currentCount = $totalMessages.text();
 
+	$('#message-' + $(this).data().id).remove();
+	$totalMessages.text(currentCount - 1);
+}
+
+$(document).ready(function() {
+	// Set total messages
+	$("#total-messages").text(data.length)
+
+	// Display each message
 	for (var i = 0; i < data.length; i++) {
 		var template = `
-		<tr class="message-row">
+		<tr class="message-row" id="message-` + i + `">
 			<td class="from-thumb">
 				<img src="` + data[i].profile_photo + `" class="thumb">
 				</td>
@@ -46,11 +57,18 @@ $(document).ready(function() {
 					` + data[i].age + `
 				</td>
 				<td class="footer-close">
-					<i class="fa fa-times" aria-hidden="true"></i>
+					<i class="fa fa-times" aria-hidden="true" id="close-` + i + `" data-id="` + i + `"></i>
 				</td>
 			</tr>
-			`;
+		`;
 
-			$(".message").append(template);
-		}
+		$(".message").append(template);
+		$("#close-" + i).click(removeEntry);
+	}
+
+	$(".dismiss-all").click(function() {
+		$(".message").text("")
+		$("#total-messages").text("0")
+	});
+
 })

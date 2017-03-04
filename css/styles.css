@@ -38,6 +38,10 @@ table {
 	background-color: rgb(30, 140, 197);
 }
 
+.dismiss-all:hover {
+	cursor: pointer;
+}
+
 /* Individual Message */
 .message {
 	height: 68px;
