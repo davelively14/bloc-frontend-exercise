@@ -55,6 +55,16 @@ table {
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, .1);
 }
 
+.message .no-messages {
+	font-size: 12px;
+	padding: 8px;
+	color: rgb(153, 153, 153)
+}
+
+.message .no-messages:hover {
+	background-color: inherit;
+}
+
 /* From  */
 .from-thumb {
 	width: 60px;

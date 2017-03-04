@@ -26,13 +26,24 @@ var data = [{	student_name: 'Sanny Lin',
 
 
 //Write your code here
+var emptyMessages = `
+	<div class="message-row no-messages">
+		You have no pending notifications.
+	</div>
+`
 
-var removeEntry = function() {
+var decreaseTotalMessages = function() {
 	var $totalMessages = $('#total-messages')
 	var currentCount = $totalMessages.text();
-
-	$('#message-' + $(this).data().id).remove();
 	$totalMessages.text(currentCount - 1);
+	if (currentCount - 1 == 0) {
+		$('.message').html(emptyMessages);
+	}
+}
+
+var removeEntry = function() {
+	$('#message-' + $(this).data().id).remove();
+	decreaseTotalMessages();
 }
 
 $(document).ready(function() {
@@ -67,8 +78,9 @@ $(document).ready(function() {
 	}
 
 	$(".dismiss-all").click(function() {
-		$(".message").text("")
-		$("#total-messages").text("0")
+		$(".message").text("");
+		$("#total-messages").text("0");
+		$('.message').html(emptyMessages);
 	});
 
 })
