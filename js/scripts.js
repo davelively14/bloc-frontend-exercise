@@ -26,3 +26,31 @@ var data = [{	student_name: 'Sanny Lin',
 
 
 //Write your code here
+
+$(document).ready(function() {
+
+	for (var i = 0; i < data.length; i++) {
+		var template = `
+		<tr class="message-row">
+			<td class="from-thumb">
+				<img src="` + data[i].profile_photo + `" class="thumb">
+				</td>
+				<td class="from-text">
+					` + data[i].student_name + `
+				</td>
+				<td class="preview">
+					<div class="title">` + data[i].subject + `</div>
+					<div class="subtitle">` + data[i].message + `</div>
+				</td>
+				<td class="footer-text">
+					` + data[i].age + `
+				</td>
+				<td class="footer-close">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</td>
+			</tr>
+			`;
+
+			$(".message").append(template);
+		}
+})
