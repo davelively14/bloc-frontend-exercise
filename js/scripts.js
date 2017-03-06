@@ -30,7 +30,7 @@ var emptyMessages = `
 	<div class="message-row no-messages">
 		You have no pending notifications.
 	</div>
-`
+`;
 
 var decreaseTotalMessages = function() {
 	var $totalMessages = $('#total-messages')
@@ -39,12 +39,12 @@ var decreaseTotalMessages = function() {
 	if (currentCount - 1 == 0) {
 		$('.message').html(emptyMessages);
 	}
-}
+};
 
 var removeEntry = function() {
 	$('#message-' + $(this).data().id).remove();
 	decreaseTotalMessages();
-}
+};
 
 $(document).ready(function() {
 	// Set total messages
@@ -83,4 +83,4 @@ $(document).ready(function() {
 		$('.message').html(emptyMessages);
 	});
 
-})
+});
